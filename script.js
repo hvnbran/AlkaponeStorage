@@ -55,20 +55,5 @@ document.addEventListener("DOMContentLoaded", function () {
             .join("\n");
         contenido += "\n\nReclamos Registrados:\n";
         contenido += reclamos.join("\n");
-
-        // Crear un blob con el contenido del archivo
-        const blob = new Blob([contenido], { type: "text/plain" });
-        const url = URL.createObjectURL(blob);
-
-        // Crear un enlace temporal para descargar el archivo
-        const enlace = document.createElement("a");
-        enlace.href = url;
-        enlace.download = "datos_completos.txt";
-        enlace.click();
-
-        // Liberar el objeto URL después de usarlo
-        URL.revokeObjectURL(url);
-
-        alert("Archivo guardado con éxito.");
     });
 });
