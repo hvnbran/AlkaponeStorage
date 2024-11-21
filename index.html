@@ -84,9 +84,9 @@
             <div id="visualizacionPedidos"></div>
             <h3>Reclamos Registrados</h3>
             <div id="visualizacionReclamos"></div>
+            <br><br>
             <!-- Botón para guardar todos los datos -->
-            <br> </br> 
-            <br></br> 
+            
             <button id="guardarTodo">Generar inventario de pedidos total</button>
         </section>
     </main>
@@ -96,6 +96,17 @@
     </footer>
 
     <script src="script.js" defer></script>
+    <script>
+        guardarTodoBtn.addEventListener("click", function () {
+            // Generar el contenido del archivo
+            let contenido = "Pedidos Registrados:\n";
+            contenido += pedidos
+                .map((pedido) => `Producto: ${pedido.producto}, Cantidad: ${pedido.cantidad}`)
+                .join("\n");
+            contenido += "\n\nReclamos Registrados:\n";
+            contenido += reclamos.join("\n");
+        });
+    </script>
 </body>
 
 </html>

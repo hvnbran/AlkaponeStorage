@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         pedidos.push({ producto, cantidad });
 
         // Actualizar la visualización de pedidos
-        visualizacionPedidos.innerHTML += `<p>${cantidad} unidades de ${producto}</p>`;
+        visualizacionPedidos.innerHTML += `<p>${cantidad} ${producto}</p>`;
 
         // Mensaje de éxito
         mensajePedido.innerText = "Pedido registrado con éxito.";
