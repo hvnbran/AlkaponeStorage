@@ -18,6 +18,7 @@
                 <li><a href="#gestion">Gestión de Inventarios</a></li>
                 <li><a href="#pedidos">Gestión de Pedidos</a></li>
                 <li><a href="#reclamos">Seguimiento de Reclamos</a></li>
+                <li><a href="#devoluciones">Gestión de Devoluciones</a></li>
                 <li><a href="#visualizacion">Visualización de Datos</a></li>
             </ul>
         </nav>
@@ -77,7 +78,18 @@
             <div id="mensajeReclamo"></div>
         </section>
 
-        <!-- Sección de visualización de datos ingresados -->
+        <section id="devoluciones">
+            <h2>Gestión de Devoluciones</h2>
+            <form id="devolucionForm">
+                <label for="productoDevuelto">Producto a Devolver:</label>
+                <input type="text" id="productoDevuelto" name="productoDevuelto" required>
+                <label for="razonDevolucion">Razón de la Devolución:</label>
+                <textarea id="razonDevolucion" name="razonDevolucion" required></textarea>
+                <button type="submit">Registrar Devolución</button>
+            </form>
+            <div id="mensajeDevolucion"></div>
+        </section>
+
         <section id="visualizacion">
             <h2>Visualización de Datos Ingresados</h2>
             <h3>Pedidos Registrados</h3>
@@ -85,9 +97,7 @@
             <h3>Reclamos Registrados</h3>
             <div id="visualizacionReclamos"></div>
             <br><br>
-            <!-- Botón para guardar todos los datos -->
             <button id="guardarTodo" type="button"> Guardar inventario diario</button>
-
         </section>
     </main>
 

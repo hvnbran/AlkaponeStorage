@@ -1,15 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     const pedidoForm = document.getElementById("pedidoForm");
     const reclamoForm = document.getElementById("reclamoForm");
+    const devolucionForm = document.getElementById("devolucionForm");
     const mensajePedido = document.getElementById("mensajePedido");
     const mensajeReclamo = document.getElementById("mensajeReclamo");
+    const mensajeDevolucion = document.getElementById("mensajeDevolucion");
     const visualizacionPedidos = document.getElementById("visualizacionPedidos");
     const visualizacionReclamos = document.getElementById("visualizacionReclamos");
     const guardarTodoBtn = document.getElementById("guardarTodo");
 
-    // Arreglos para almacenar los pedidos y reclamos
+    // Arreglos para almacenar los pedidos, reclamos y devoluciones
     let pedidos = [];
     let reclamos = [];
+    let devoluciones = [];
 
     // Manejar el envío del formulario de pedidos
     pedidoForm.addEventListener("submit", function (event) {
@@ -46,6 +49,21 @@ document.addEventListener("DOMContentLoaded", function () {
         reclamoForm.reset(); // Limpiar el formulario
     });
 
+    // Manejar el envío del formulario de devoluciones
+    devolucionForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const productoDevuelto = document.getElementById("productoDevuelto").value;
+        const razonDevolucion = document.getElementById("razonDevolucion").value;
+
+        // Agregar la nueva devolución al arreglo
+        devoluciones.push({ productoDevuelto, razonDevolucion });
+
+        // Actualizar la visualización de devoluciones
+        mensajeDevolucion.innerText = "Devolución registrada con éxito.";
+        devolucionForm.reset(); // Limpiar el formulario
+    });
+
     // Manejar el clic del botón "Guardar Todo"
     guardarTodoBtn.addEventListener("click", function (event) {
         event.preventDefault(); // Prevenir cualquier comportamiento predeterminado
@@ -55,8 +73,17 @@ document.addEventListener("DOMContentLoaded", function () {
         contenido += pedidos
             .map((pedido) => `Producto: ${pedido.producto}, Cantidad: ${pedido.cantidad}`)
             .join("\n");
+
         contenido += "\n\nReclamos Registrados:\n";
         contenido += reclamos.join("\n");
+
+        contenido += "\n\nDevoluciones Registradas:\n";
+        contenido += devoluciones
+            .map(
+                (devolucion) =>
+                    `Producto Devuelto: ${devolucion.productoDevuelto}, Razón: ${devolucion.razonDevolucion}`
+            )
+            .join("\n");
 
         // Crear un blob con el contenido del archivo
         const blob = new Blob([contenido], { type: "text/plain" });
